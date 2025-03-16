@@ -28,31 +28,33 @@ Follow these steps to set up and run the chatbot locally from scratch. All depen
 ### Step-by-Step Installation
 
 1. **Clone the Repository**
-    - git clone https://github.com/singghh/jenkins-2025.git
-    - cd jenkins-2025
+           git clone https://github.com/singghh/jenkins-2025.git
+           cd jenkins-2025
 2. **Install Python (if not already installed)**
     Download Python from python.org (e.g., Python 3.11).
     During installation, check "Add Python to PATH."
     verify installation through:
-      - python --version
+               python --version
 4.  **Set Up a Virtual Environment**
+   
      i) Create a virtual environment:
-      - python -m venv chatbot_env
+               python -m venv chatbot_env
      ii) Avtivate it
-      - windows: source chatbot_env/Scripts/activate
-      - mac: source chatbot_env/bin/activate
-5.  **Install Dependencies**
-      - pip install fastapi uvicorn transformers torch sqlite3 pandas scikit-learn fuzzywuzzy[speedup] accelerate
-6.  **Prepare the Dataset and Model**
-      -  Ensure jenkins_queries.csv (provided in the repo) is in the root directory.
-      -  The fine-tuned DistilBERT model is included in the ./distilbert_finetuned folder. If missing, run finetune_distilbert.py (see below).
-7.  **Run the Fine-Tuning Script (Optional)**
-     -  If you want to retrain the model
-     -  python finetune_distilbert.py
-     -  This generates ./distilbert_finetuned and label_encoder.pkl. Expect warnings about uninitialized weights (normal) and a training log.
-8.  **Start server**
-   -  uvicorn main:app --host 0.0.0.0 --port 8000
-   -  Open your browser at http://localhost:8000 to interact with the chatbot.
+               windows: source chatbot_env/Scripts/activate
+               mac: source chatbot_env/bin/activate
+    
+6.  **Install Dependencies**
+           pip install fastapi uvicorn transformers torch sqlite3 pandas scikit-learn fuzzywuzzy[speedup] accelerate
+7.  **Prepare the Dataset and Model**
+            Ensure jenkins_queries.csv (provided in the repo) is in the root directory.
+            The fine-tuned DistilBERT model is included in the ./distilbert_finetuned folder. If missing, run finetune_distilbert.py (see below).
+8.  **Run the Fine-Tuning Script (Optional)**
+            If you want to retrain the model
+            python finetune_distilbert.py
+            This generates ./distilbert_finetuned and label_encoder.pkl. Expect warnings about uninitialized weights (normal) and a training log.
+9.  **Start server**
+            uvicorn main:app --host 0.0.0.0 --port 8000
+            Open your browser at http://localhost:8000 to interact with the chatbot.
 
 **Troubleshooting**
 
