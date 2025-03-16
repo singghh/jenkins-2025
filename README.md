@@ -27,43 +27,43 @@ Follow these steps to set up and run the chatbot locally from scratch. All depen
 
 ### Step-by-Step Installation
 
-1. **Clone the Repository**
-           git clone https://github.com/singghh/jenkins-2025.git
-           cd jenkins-2025
-2. **Install Python (if not already installed)**
-    Download Python from python.org (e.g., Python 3.11).
-    During installation, check "Add Python to PATH."
-    verify installation through:
+1. ####Clone the Repository
+              git clone https://github.com/singghh/jenkins-2025.git
+              cd jenkins_chatbot_demo
+2. ####Install Python (if not already installed)
+           Download Python from python.org (e.g., Python 3.11).
+           During installation, check "Add Python to PATH."
+   verify installation through:
                python --version
-4.  **Set Up a Virtual Environment**
+4.  ###Set Up a Virtual Environment
    
-     i) Create a virtual environment:
-               python -m venv chatbot_env
-     ii) Avtivate it
-               windows: source chatbot_env/Scripts/activate
-               mac: source chatbot_env/bin/activate
+     Create a virtual environment:
+              python -m venv chatbot_env
+     Avtivate it
+              windows: source chatbot_env/Scripts/activate
+              mac: source chatbot_env/bin/activate
     
-6.  **Install Dependencies**
-           pip install fastapi uvicorn transformers torch sqlite3 pandas scikit-learn fuzzywuzzy[speedup] accelerate
-7.  **Prepare the Dataset and Model**
-            Ensure jenkins_queries.csv (provided in the repo) is in the root directory.
-            The fine-tuned DistilBERT model is included in the ./distilbert_finetuned folder. If missing, run finetune_distilbert.py (see below).
-8.  **Run the Fine-Tuning Script (Optional)**
-            If you want to retrain the model
-            python finetune_distilbert.py
-            This generates ./distilbert_finetuned and label_encoder.pkl. Expect warnings about uninitialized weights (normal) and a training log.
-9.  **Start server**
-            uvicorn main:app --host 0.0.0.0 --port 8000
-            Open your browser at http://localhost:8000 to interact with the chatbot.
+6.  ####Install Dependencies
+              pip install fastapi uvicorn transformers torch sqlite3 pandas scikit-learn fuzzywuzzy[speedup] accelerate
+7.  ####Prepare the Dataset and Model
+              Ensure jenkins_queries.csv (provided in the repo) is in the root directory.
+              The fine-tuned DistilBERT model is included in the ./distilbert_finetuned folder. If missing, run finetune_distilbert.py (see below).
+8.  ####Run the Fine-Tuning Script (Optional)
+              If you want to retrain the model
+              python finetune_distilbert.py
+              This generates ./distilbert_finetuned and label_encoder.pkl. Expect warnings about uninitialized weights (normal) and a training log.
+9.  ####Start server
+              uvicorn main:app --host 0.0.0.0 --port 8000
+              Open your browser at http://localhost:8000 to interact with the chatbot.
 
-**Troubleshooting**
+##Troubleshooting
 
 Dependency Errors: Ensure all packages install correctly. If accelerate fails, use pip install accelerate --upgrade.
 Model Not Found: If ./distilbert_finetuned is missing, rerun finetune_distilbert.py after verifying jenkins_queries.csv.
 Port Conflict: If port 8000 is in use, change it with --port 8001
 
 
-**Usage**
+##Usage
 
 After starting the server (Step 7 above), open http://localhost:8000 in your browser.
 Enter queries in the input field
@@ -75,7 +75,7 @@ e.g.:
 The chatbot will respond with descriptions, links, or snippets based on the intent.
 Test fuzzy matching with typos (e.g., "show me mavne plugin") to see suggestions.
 
-**Sample Responses:**
+##Sample Responses
 
 "Maven plugin for building Java projects (Learn more: https://updates.jenkins.io/download/plugins/maven-plugin/)"
 "Here’s the documentation for pipelines: https://www.jenkins.io/doc/book/pipeline/"
